@@ -20,6 +20,97 @@ nav {
 .logo span { color: var(--primary); }
 
 #hero-car {
+    /* Ajuste para que el inicio se vea bien en celular */
+.hero {
+    height: 100vh; /* Ocupa toda la pantalla del celular */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center;     /* Centra horizontalmente */
+    text-align: center;
+    padding: 0 20px;         /* Evita que el texto toque los bordes */
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 8vw, 4rem); /* Tamaño de letra que se encoge en el celular */
+    line-height: 1.2;
+}
+
+/* Ajuste de los contenedores para móviles */
+.container {
+    padding: 40px 5%; /* Menos espacio a los lados en pantallas chicas */
+}
+
+/* Forzar que las columnas se vuelvan una sola fila en celular */
+@media (max-width: 768px) {
+    /* Estilos Base del Menú */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: #121212;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* --- AJUSTE PARA CELULARES --- */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column; /* Apila el logo sobre los links */
+        padding: 15px 0;
+    }
+
+    .nav-links {
+        padding: 10px 0;
+        width: 100%;
+        justify-content: center; /* Centra los links de Inicio, Precios, etc. */
+        gap: 15px;
+    }
+
+    .nav-phone {
+        width: 90%;
+        text-align: center;
+    }
+
+    .nav-phone a {
+        display: block; /* Hace que el botón de llamar sea ancho y fácil de tocar */
+        width: 100%;
+        padding: 12px;
+    }
+}
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav ul {
+        gap: 10px;
+        font-size: 0.8rem;
+    }
+
+    .servicios-grid {
+        grid-template-columns: 1fr; /* Una sola columna de precios */
+    }
+
+    .mapa-info {
+        width: 100%; /* El cuadro de "Cómo llegar" ocupa todo el ancho */
+        margin-top: 0;
+    }
+    .hero {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat;
+}
+}
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                 url('https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=1500');
     height: 80vh;
@@ -195,3 +286,70 @@ nav a { color: white; text-decoration: none; font-weight: bold; }
 
 footer { background: var(--dark); color: white; padding: 40px; text-align: center; }
 .float-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; z-index: 1000; text-decoration: none; }
+/* Contacto y Mapa */
+.contacto-flex {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.mapa-container, .contacto-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.botones-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+    transform: translateY(-3px);
+}
+
+.btn-llamar {
+    background-color: var(--primary);
+    color: black;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+/* Tarjetas de Servicios */
+.servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.servicio-card { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #eee; }
+.servicio-card.destacado { border: 2px solid var(--primary); transform: scale(1.05); position: relative; }
+.badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: black; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
+.precio { font-size: 2rem; font-weight: bold; color: var(--accent); margin: 15px 0; }
+.servicio-card ul { list-style: none; text-align: left; margin-top: 20px; }
+.servicio-card li { margin-bottom: 10px; font-size: 0.9rem; }
+
+/* Mapa y Botón GPS */
+.mapa-wrapper { position: relative; }
+.mapa-info { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); margin-top: -50px; position: relative; z-index: 10; width: 90%; margin-left: auto; margin-right: auto; text-align: center; }
+.btn-gps { display: inline-block; background: #4285F4; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: 0.3s; }
+.btn-gps:hover { background: #357ae8; transform: translateY(-2px); }
